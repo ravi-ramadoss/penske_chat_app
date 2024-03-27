@@ -1,26 +1,19 @@
-
 const axios = require('axios');
 require('dotenv').config();
-import { ChatOpenAI, OpenAIEmbeddings } from "@langchain/openai";
-import { HNSWLib } from "@langchain/community/vectorstores/hnswlib";
-import { formatDocumentsAsString } from "langchain/util/document";
-import { PromptTemplate } from "@langchain/core/prompts";
-import {
-  RunnableSequence,
-  RunnablePassthrough,
-} from "@langchain/core/runnables";
-import { StringOutputParser } from "@langchain/core/output_parsers";
 
-const model = new ChatOpenAI({});
+// const { LangChain } = require('langchain');
 
-retriever = PineconeHybridSearchRetriever(
-  embeddings=embeddings, sparse_encoder=bm25_encoder, index=index
-)
+// const LANGCHAIN_API_KEY = process.env.LANGCHAIN_API_KEY;
+// const OPENAI_API_URL = 'https://api.openai.com';
+// const OPENAI_API_KEY = process.env.OPENAI_API_KEY;
+
+// const langChain = new LangChain({ apiKey: LANGCHAIN_API_KEY });
 
 async function fetchContext(question) {
   try {
     console.log(`Fetching context for question: ${question}`);
-    const context = await langChain.getContext(question);
+    const context = 'This is a context';
+    // const context = await langChain.getContext(question);
     console.log(`Context fetched: ${context}`);
     return context;
   } catch (error) {
@@ -33,19 +26,20 @@ async function fetchContext(question) {
 async function generateAnswer(question, context) {
   try {
     console.log(`Generating answer for question: ${question} with context`);
-    const response = await axios.post(`${OPENAI_API_URL}/v1/engines/davinci/completions`, {
-      prompt: `${context}\n\n${question}`,
-      max_tokens: 150,
-      n: 1,
-      stop: null,
-      temperature: 0.5,
-    }, {
-      headers: {
-        'Authorization': `Bearer ${OPENAI_API_KEY}`
-      }
-    });
+    // const response = await axios.post(`${OPENAI_API_URL}/v1/engines/davinci/completions`, {
+    //   prompt: `${context}\n\n${question}`,
+    //   max_tokens: 150,
+    //   n: 1,
+    //   stop: null,
+    //   temperature: 0.5,
+    // }, {
+    //   headers: {
+    //     'Authorization': `Bearer ${OPENAI_API_KEY}`
+    //   }
+    // });
 
-    const answer = response.data.choices[0].text.trim();
+    // const answer = response.data.choices[0].text.trim();
+    const answer = 'This is an answer';
     console.log(`Generated answer: ${answer}`);
     return answer;
   } catch (error) {
