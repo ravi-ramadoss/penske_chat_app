@@ -26,7 +26,7 @@ async function fetchContext(question) {
 async function generateAnswer(question, context) {
   try {
     console.log(`Generating answer for question: ${question} with context`);
-    const response = await axios.post("https://penske-langchain-backend-509e71cd8694.herokuapp.com/query?param=fromui", {
+    const response = await axios.get("https://penske-langchain-backend-509e71cd8694.herokuapp.com/query?param=fromui", {
       param: "abc123"
     })
     // const response = await axios.post(`${OPENAI_API_URL}/v1/engines/davinci/completions`, {
