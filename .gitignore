@@ -2,5 +2,4 @@
 gpt-pilot/
 models/
 node_modules/
-public/
 *.nnb
