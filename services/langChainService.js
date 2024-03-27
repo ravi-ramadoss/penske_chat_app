@@ -45,7 +45,7 @@ async function generateAnswer(question, context) {
     // const answer = response.data.choices[0].text.trim();
     // const answer = 'This is an answer';
     console.log(`Generated answer: ${response}`);
-    return answer;
+    return response;
   } catch (error) {
     console.error('Error generating answer with OpenAI:', error.message);
     console.error(error.stack);
