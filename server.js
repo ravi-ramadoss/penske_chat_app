@@ -1,6 +1,6 @@
 // Load environment variables
 require("dotenv").config();
-const mongoose = require("mongoose");
+// const mongoose = require("mongoose");
 const express = require("express");
 const chatRoutes = require('./routes/chatRoutes'); // Added chatRoutes
 
@@ -23,16 +23,16 @@ app.set("view engine", "ejs");
 app.use(express.static("public"));
 
 // Database connection
-mongoose
-  .connect(process.env.DATABASE_URL)
-  .then(() => {
-    console.log("Database connected successfully");
-  })
-  .catch((err) => {
-    console.error(`Database connection error: ${err.message}`);
-    console.error(err.stack);
-    process.exit(1);
-  });
+// mongoose
+//   .connect(process.env.DATABASE_URL)
+//   .then(() => {
+//     console.log("Database connected successfully");
+//   })
+//   .catch((err) => {
+//     console.error(`Database connection error: ${err.message}`);
+//     console.error(err.stack);
+//     process.exit(1);
+//   });
 
 app.on("error", (error) => {
   console.error(`Server error: ${error.message}`);
