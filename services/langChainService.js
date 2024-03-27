@@ -29,6 +29,7 @@ async function generateAnswer(question, context) {
     const response = await axios.get("https://penske-langchain-backend-509e71cd8694.herokuapp.com/query?param=fromui", {
       param: "abc123"
     })
+    console.log(`Response: ${response}`);
     // const response = await axios.post(`${OPENAI_API_URL}/v1/engines/davinci/completions`, {
     //   prompt: `${context}\n\n${question}`,
     //   max_tokens: 150,
