@@ -25,11 +25,16 @@ async function fetchContext(question) {
 
 async function generateAnswer(question, context) {
   try {
+    if ( process.env.NODE_ENV === 'development' ) {
+      url = "http://127.0.0.1:5000/query?param=abc";
+    } else {
+      url = "https://penske-langchain-backend-509e71cd8694.herokuapp.com/query?param=fromui";
+    }
     console.log(`Generating answer for question: ${question} with context`);
-    const response = await axios.get("https://penske-langchain-backend-509e71cd8694.herokuapp.com/query?param=fromui", {
+    const response = await axios.get(url, {
       param: "abc123"
     })
-    console.log(`Response: ${response}`);
+    console.log(`Response: ${JSON.stringify(response.data)}`);
     // const response = await axios.post(`${OPENAI_API_URL}/v1/engines/davinci/completions`, {
     //   prompt: `${context}\n\n${question}`,
     //   max_tokens: 150,
@@ -44,8 +49,8 @@ async function generateAnswer(question, context) {
 
     // const answer = response.data.choices[0].text.trim();
     // const answer = 'This is an answer';
-    console.log(`Generated answer: ${response}`);
-    return response;
+    console.log(`Generated answer generateAnswer: ${JSON.stringify(response.data)}`);
+    return JSON.stringify(response.data);
   } catch (error) {
     console.error('Error generating answer with OpenAI:', error.message);
     console.error(error.stack);
@@ -58,6 +63,7 @@ async function fetchRelevantInformation(question) {
     console.log(`Fetching relevant information for question: ${question}`);
     const context = await fetchContext(question);
     const answer = await generateAnswer(question, context);
+    console.log(`Fetched answer: ${answer}`);
     return answer;
   } catch (error) {
     console.error('Error in fetchRelevantInformation:', error.message);
