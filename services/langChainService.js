@@ -26,6 +26,9 @@ async function fetchContext(question) {
 async function generateAnswer(question, context) {
   try {
     console.log(`Generating answer for question: ${question} with context`);
+    const response = await axios.post("https://penske-langchain-backend-509e71cd8694.herokuapp.com/query?param=fromui", {
+      param: "abc123"
+    })
     // const response = await axios.post(`${OPENAI_API_URL}/v1/engines/davinci/completions`, {
     //   prompt: `${context}\n\n${question}`,
     //   max_tokens: 150,
@@ -39,8 +42,8 @@ async function generateAnswer(question, context) {
     // });
 
     // const answer = response.data.choices[0].text.trim();
-    const answer = 'This is an answer';
-    console.log(`Generated answer: ${answer}`);
+    // const answer = 'This is an answer';
+    console.log(`Generated answer: ${response}`);
     return answer;
   } catch (error) {
     console.error('Error generating answer with OpenAI:', error.message);
