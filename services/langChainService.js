@@ -26,13 +26,13 @@ async function fetchContext(question) {
 async function generateAnswer(question, context) {
   try {
     if ( process.env.NODE_ENV === 'development' ) {
-      url = "http://127.0.0.1:5000/query?param=abc";
+      url = "http://127.0.0.1:5000/query";
     } else {
       url = "https://penske-langchain-backend-509e71cd8694.herokuapp.com/query?param=fromui";
     }
     console.log(`Generating answer for question: ${question} with context`);
     const response = await axios.get(url, {
-      param: "abc123"
+       params: { question: question }
     })
     console.log(`Response: ${JSON.stringify(response.data)}`);
     // const response = await axios.post(`${OPENAI_API_URL}/v1/engines/davinci/completions`, {
