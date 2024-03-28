@@ -28,7 +28,7 @@ async function generateAnswer(question, context) {
     if ( process.env.NODE_ENV === 'development' ) {
       url = "http://127.0.0.1:5000/query";
     } else {
-      url = "https://penske-langchain-backend-509e71cd8694.herokuapp.com/query?param=fromui";
+      url = "https://penske-langchain-backend-509e71cd8694.herokuapp.com/query";
     }
     console.log(`Generating answer for question: ${question} with context`);
     const response = await axios.get(url, {
