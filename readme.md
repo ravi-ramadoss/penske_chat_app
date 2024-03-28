@@ -2,6 +2,8 @@
 
 This application is a demonstration of a chatbot designed to assist customers in returning their trucks. It was inspired by the projects being executed at Penske and is intended to showcase the developer's skills to Penske recruiters and hiring managers.
 
+Test out the app live here (penske chat app)[https://penske-chat-app-b53dd4f99ae3.herokuapp.com]
+
 ## Features
 
 - Provides information about the truck return process
